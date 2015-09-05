@@ -21,6 +21,7 @@ from mainsite import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'sessiontypes', views.SessionTypeViewSet)
+router.register(r'customers', views.CustomerViewSet)
 
 
 urlpatterns = [
