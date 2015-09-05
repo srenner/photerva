@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from mainsite.models import SessionType, Customer
+from mainsite.models import SessionType, Customer, Phone
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -16,3 +16,8 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
         fields = ('name', 'notes', 'user')
+
+class PhoneSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Phone
+        fields = ('name', 'phone', 'ext', 'location', 'customer')
