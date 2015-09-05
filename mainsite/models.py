@@ -14,6 +14,9 @@ class Customer(models.Model):
     notes = models.TextField()
     user = models.ForeignKey(User)
 
+    def __str__(self):
+        return self.name
+
 class SessionType(models.Model):
     name = models.CharField(max_length = 100)
     notes = models.TextField()
