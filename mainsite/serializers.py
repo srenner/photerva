@@ -12,10 +12,9 @@ class SessionTypeSerializer(serializers.HyperlinkedModelSerializer):
         model = SessionType
         fields = ('name', 'notes', 'base_price', 'shoot_time', 'edit_time', 'user')
 
-class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ('name', 'notes', 'user')
 
 class PhoneSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
