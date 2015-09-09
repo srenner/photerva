@@ -42,7 +42,7 @@ class Phone(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=25)
     ext = models.CharField(max_length=25, blank=True, null=True)
-    location = models.ForeignKey('Location', blank=True, null=True)
+    location = models.ForeignKey('Location', related_name='phones', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
 
 class Email(models.Model):
