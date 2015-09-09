@@ -16,7 +16,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
 
-class PhoneSerializer(serializers.HyperlinkedModelSerializer):
+class PhoneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phone
         fields = ('name', 'phone', 'ext', 'location', 'customer')
