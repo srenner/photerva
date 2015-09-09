@@ -15,6 +15,7 @@ class SessionTypeSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
+        depth = 2
 
 class PhoneSerializer(serializers.ModelSerializer):
     class Meta:
