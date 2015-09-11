@@ -15,7 +15,7 @@ class SessionTypeSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        depth = 2
+        #depth = 2
         phones = serializers.StringRelatedField(many=True, required=False)
         fields = ('name', 'notes', 'user', 'phones')
 
