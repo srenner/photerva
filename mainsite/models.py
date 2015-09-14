@@ -13,7 +13,6 @@ class Customer(models.Model):
     name = models.CharField(max_length=100)
     notes = models.TextField()
     user = models.ForeignKey(User)
-
     def __str__(self):
         return self.name
 
@@ -44,6 +43,8 @@ class Phone(models.Model):
     ext = models.CharField(max_length=25, blank=True, null=True)
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='phones', blank=True, null=True)
+    def __str__(self):
+        return self.phone
 
 class Email(models.Model):
     name = models.CharField(max_length=100)
