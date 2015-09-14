@@ -51,6 +51,8 @@ class Email(models.Model):
     email = models.CharField(max_length=200)
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
+    def __str__(self):
+        return self.email
 
 class Link(models.Model):
     name = models.CharField(max_length=100)
@@ -58,6 +60,8 @@ class Link(models.Model):
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
+    def __str__(self):
+        return self.url
 
 class Address(models.Model):
     name = models.CharField(max_length=100)
@@ -69,3 +73,5 @@ class Address(models.Model):
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
+    def __str__(self):
+        return self.name
