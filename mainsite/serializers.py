@@ -1,10 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-<<<<<<< HEAD
 from mainsite.models import SessionType, Customer, Phone, Session, Location
-=======
-from mainsite.models import SessionType, Customer, Phone, Location
->>>>>>> 82b67223f4e5f08792e3d28d3a1510795016c297
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
