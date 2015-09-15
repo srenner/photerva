@@ -23,6 +23,8 @@ router.register(r'users', views.UserViewSet)
 router.register(r'sessiontypes', views.SessionTypeViewSet)
 router.register(r'customers', views.CustomerViewSet)
 router.register(r'phones', views.PhoneViewSet)
+router.register(r'sessions', views.SessionViewSet)
+router.register(r'locations', views.LocationViewSet)
 
 
 urlpatterns = [
