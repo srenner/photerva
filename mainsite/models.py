@@ -4,11 +4,6 @@ from django.db.models.fields.related import ForeignKey
 
 #########PARENT CLASSES WE ARE MOST INTERESTED IN##########
 
-class Location(models.Model):
-    name = models.CharField(max_length=100)
-    notes = models.TextField()
-    owner = models.ForeignKey(User)
-
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     notes = models.TextField()
@@ -41,7 +36,6 @@ class Phone(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=25)
     ext = models.CharField(max_length=25, blank=True, null=True)
-    location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='phones', blank=True, null=True)
     owner = models.ForeignKey(User)
     def __str__(self):
@@ -50,7 +44,6 @@ class Phone(models.Model):
 class EmailAddress(models.Model):
     name = models.CharField(max_length=100)
     email_address = models.CharField(max_length=200)
-    location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     owner = models.ForeignKey(User)
     def __str__(self):
@@ -59,7 +52,6 @@ class EmailAddress(models.Model):
 class Link(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField()
-    location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
     owner = models.ForeignKey(User)
@@ -73,9 +65,8 @@ class Address(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zip = models.CharField(max_length=100)
-    location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='addresses', blank=True, null=True)
-    session = models.ForeignKey('Session', blank=True, null=True)
+    session = models.ForeignKey('Session', related_name='addresses', blank=True, null=True)
     owner = models.ForeignKey(User)
     def __str__(self):
         return self.name

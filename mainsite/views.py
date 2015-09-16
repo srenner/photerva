@@ -4,11 +4,10 @@ from mainsite.serializers import SessionTypeSerializer
 from mainsite.serializers import CustomerSerializer
 from mainsite.serializers import PhoneSerializer
 from mainsite.serializers import SessionSerializer
-from mainsite.serializers import LocationSerializer
 from mainsite.serializers import AddressSerializer
 from rest_framework import viewsets
 from django.contrib.auth.models import User
-from mainsite.models import SessionType, Customer, Phone, Session, Location
+from mainsite.models import SessionType, Customer, Phone, Session
 from mainsite.models import Address
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -30,10 +29,6 @@ class PhoneViewSet(viewsets.ModelViewSet):
 class SessionViewSet(viewsets.ModelViewSet):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
-
-class LocationViewSet(viewsets.ModelViewSet):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
 
 class AddressViewSet(viewsets.ModelViewSet):
     queryset = Address.objects.all()
