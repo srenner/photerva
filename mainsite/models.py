@@ -74,7 +74,7 @@ class Address(models.Model):
     state = models.CharField(max_length=100)
     zip = models.CharField(max_length=100)
     location = models.ForeignKey('Location', blank=True, null=True)
-    customer = models.ForeignKey('Customer', blank=True, null=True)
+    customer = models.ForeignKey('Customer', related_name='addresses', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
     owner = models.ForeignKey(User)
     def __str__(self):

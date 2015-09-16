@@ -17,7 +17,8 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         #depth = 2
         phones = serializers.StringRelatedField(many=True, required=False)
-        fields = ('name', 'notes', 'owner', 'phones')
+        addresses = serializers.StringRelatedField(many=True, required=False)
+        fields = ('name', 'notes', 'owner', 'phones', 'addresses')
 
 class PhoneSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,4 +39,4 @@ class LocationSerializer(serializers.ModelSerializer):
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ('name', 'address1', 'address2', 'city', 'state', 'zip')
+        fields = ('name', 'address1', 'address2', 'city', 'state', 'zip', 'owner')
