@@ -21,7 +21,7 @@ class SessionType(models.Model):
 
 class Session(models.Model):
     datetime = models.DateTimeField()
-    backup_datetime = models.DateTimeField()
+    backup_datetime = models.DateTimeField(null=True, blank=True)
     notes = models.TextField()
     quoted_price = models.DecimalField(max_digits=8, decimal_places=2)
     final_price = models.DecimalField(max_digits=8, decimal_places=2)
@@ -29,11 +29,11 @@ class Session(models.Model):
     shoot_time = models.TimeField()
     edit_time = models.TimeField()
     owner = models.ForeignKey(User)
+    customer = models.ForeignKey('Customer')
 
 ##########CHILD CLASSES##########
 
 class Phone(models.Model):
-    name = models.CharField(max_length=100)
     phone = models.CharField(max_length=25)
     ext = models.CharField(max_length=25, blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='phones', blank=True, null=True)
