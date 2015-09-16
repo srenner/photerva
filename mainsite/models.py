@@ -7,12 +7,12 @@ from django.db.models.fields.related import ForeignKey
 class Location(models.Model):
     name = models.CharField(max_length=100)
     notes = models.TextField()
-    user = models.ForeignKey(User)
+    owner = models.ForeignKey(User)
 
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     notes = models.TextField()
-    user = models.ForeignKey(User)
+    owner = models.ForeignKey(User)
     def __str__(self):
         return self.name
 
@@ -22,7 +22,7 @@ class SessionType(models.Model):
     base_price = models.DecimalField(max_digits=8, decimal_places=2)
     shoot_time = models.TimeField()
     edit_time = models.TimeField()
-    user = models.ForeignKey(User)
+    owner = models.ForeignKey(User)
 
 class Session(models.Model):
     datetime = models.DateTimeField()
@@ -33,7 +33,7 @@ class Session(models.Model):
     expenses = models.DecimalField(max_digits=8, decimal_places=2)
     shoot_time = models.TimeField()
     edit_time = models.TimeField()
-    user = models.ForeignKey(User)
+    owner = models.ForeignKey(User)
 
 ##########CHILD CLASSES##########
 
@@ -43,14 +43,16 @@ class Phone(models.Model):
     ext = models.CharField(max_length=25, blank=True, null=True)
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='phones', blank=True, null=True)
+    owner = models.ForeignKey(User)
     def __str__(self):
         return self.phone
 
-class Email(models.Model):
+class EmailAddress(models.Model):
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=200)
+    email_address = models.CharField(max_length=200)
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
+    owner = models.ForeignKey(User)
     def __str__(self):
         return self.email
 
@@ -60,6 +62,7 @@ class Link(models.Model):
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
+    owner = models.ForeignKey(User)
     def __str__(self):
         return self.url
 
@@ -73,5 +76,6 @@ class Address(models.Model):
     location = models.ForeignKey('Location', blank=True, null=True)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     session = models.ForeignKey('Session', blank=True, null=True)
+    owner = models.ForeignKey(User)
     def __str__(self):
         return self.name

@@ -10,14 +10,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class SessionTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SessionType
-        fields = ('name', 'notes', 'base_price', 'shoot_time', 'edit_time', 'user')
+        fields = ('name', 'notes', 'base_price', 'shoot_time', 'edit_time', 'owner')
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         #depth = 2
         phones = serializers.StringRelatedField(many=True, required=False)
-        fields = ('name', 'notes', 'user', 'phones')
+        fields = ('name', 'notes', 'owner', 'phones')
 
 class PhoneSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,12 +28,12 @@ class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
         #locations = serializers.StringRelatedField(many=True, required=False)
-        fields = ('datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'user')
+        fields = ('datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'owner')
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('name', 'notes', 'user')
+        fields = ('name', 'notes', 'owner')
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
