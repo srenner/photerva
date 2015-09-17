@@ -29,7 +29,7 @@ class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
         #locations = serializers.StringRelatedField(many=True, required=False)
-        fields = ('datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'customer', 'owner')
+        fields = ('datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'customer', 'owner', 'addresses')
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
