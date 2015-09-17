@@ -24,7 +24,7 @@ router.register(r'sessiontypes', views.SessionTypeViewSet)
 router.register(r'customers', views.CustomerViewSet)
 router.register(r'phones', views.PhoneViewSet)
 router.register(r'sessions', views.SessionViewSet)
-router.register(r'addresses', views.AddressViewSet)
+router.register(r'addresses', views.AddressViewSet, base_name='Address')
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

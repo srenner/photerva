@@ -31,5 +31,6 @@ class SessionViewSet(viewsets.ModelViewSet):
     serializer_class = SessionSerializer
 
 class AddressViewSet(viewsets.ModelViewSet):
-    queryset = Address.objects.all()
+    def get_queryset(self):
+        return Address.objects.filter(owner=self.request.user)
     serializer_class = AddressSerializer
