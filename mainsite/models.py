@@ -41,6 +41,9 @@ class Session(models.Model):
     @property
     def profit(self):
         return round((self.final_price - self.expenses),2)
+    @property
+    def discount(self):
+        return (self.quoted_price - self.final_price) / self.quoted_price
 
 
 ##########CHILD CLASSES##########
