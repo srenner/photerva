@@ -37,8 +37,7 @@ class Session(models.Model):
     #session_type = models.ForeignKey('SessionType')
     @property
     def effective_rate(self):
-        #return (self.final_price - self.expenses) / (self.shoot_time + self.edit_time)
-        return float((self.final_price - self.expenses)) / ((self.shoot_time.total_seconds() + self.edit_time.total_seconds())/3600)
+        return round(float((self.final_price - self.expenses)) / ((self.shoot_time.total_seconds() + self.edit_time.total_seconds())/3600), 2)
 
 
 ##########CHILD CLASSES##########
