@@ -38,6 +38,9 @@ class Session(models.Model):
     @property
     def effective_rate(self):
         return round(float((self.final_price - self.expenses)) / ((self.shoot_time.total_seconds() + self.edit_time.total_seconds())/3600), 2)
+    @property
+    def profit(self):
+        return round((self.final_price - self.expenses),2)
 
 
 ##########CHILD CLASSES##########
