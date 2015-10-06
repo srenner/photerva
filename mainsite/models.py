@@ -29,12 +29,17 @@ class Session(models.Model):
     quoted_price = models.DecimalField(max_digits=8, decimal_places=2)
     final_price = models.DecimalField(max_digits=8, decimal_places=2)
     expenses = models.DecimalField(max_digits=8, decimal_places=2)
-    shoot_time = models.TimeField()
-    edit_time = models.TimeField()
+    shoot_time = models.DurationField()
+    edit_time = models.DurationField()
     owner = models.ForeignKey(User)
     customer = models.ForeignKey('Customer')
     #address = models.ForeignKey('Address')
     #session_type = models.ForeignKey('SessionType')
+    @property
+    def effective_rate(self):
+        #return (self.final_price - self.expenses) / (self.shoot_time + self.edit_time)
+        return float((self.final_price - self.expenses)) / ((self.shoot_time.total_seconds() + self.edit_time.total_seconds())/3600)
+
 
 ##########CHILD CLASSES##########
 
