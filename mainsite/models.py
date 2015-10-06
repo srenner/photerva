@@ -13,11 +13,14 @@ class Customer(models.Model):
 
 class SessionType(models.Model):
     name = models.CharField(max_length=100)
-    notes = models.TextField()
+    notes = models.TextField(blank=True, null=True)
     base_price = models.DecimalField(max_digits=8, decimal_places=2)
     shoot_time = models.TimeField()
     edit_time = models.TimeField()
     owner = models.ForeignKey(User)
+    session = models.ForeignKey('Session', related_name='session_type', blank=True, null=True)
+    def __str__(self):
+        return self.name
 
 class Session(models.Model):
     datetime = models.DateTimeField()
@@ -30,6 +33,8 @@ class Session(models.Model):
     edit_time = models.TimeField()
     owner = models.ForeignKey(User)
     customer = models.ForeignKey('Customer')
+    #address = models.ForeignKey('Address')
+    #session_type = models.ForeignKey('SessionType')
 
 ##########CHILD CLASSES##########
 
@@ -60,11 +65,11 @@ class Link(models.Model):
 
 class Address(models.Model):
     name = models.CharField(max_length=100)
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zip = models.CharField(max_length=100)
+    address1 = models.CharField(max_length=100, blank=True, null=True)
+    address2 = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    zip = models.CharField(max_length=100, blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='addresses', blank=True, null=True)
     session = models.ForeignKey('Session', related_name='addresses', blank=True, null=True)
     owner = models.ForeignKey(User)

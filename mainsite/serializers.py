@@ -28,8 +28,10 @@ class PhoneSerializer(serializers.ModelSerializer):
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
+        #addresses = serializers.StringRelatedField(many=True, required=False)
+        #session_type = serializers.StringRelatedField(many=False, required=False)
         #locations = serializers.StringRelatedField(many=True, required=False)
-        fields = ('datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'customer', 'owner', 'addresses')
+        fields = ('session_type', 'datetime', 'backup_datetime', 'notes', 'quoted_price', 'final_price', 'expenses', 'shoot_time', 'edit_time', 'customer', 'owner', 'addresses')
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
