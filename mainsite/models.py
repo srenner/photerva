@@ -49,6 +49,7 @@ class Session(models.Model):
 ##########CHILD CLASSES##########
 
 class Phone(models.Model):
+    name = models.CharField(max_length=100)
     phone = models.CharField(max_length=25)
     ext = models.CharField(max_length=25, blank=True, null=True)
     customer = models.ForeignKey('Customer', related_name='phones', blank=True, null=True)

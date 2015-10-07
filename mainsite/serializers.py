@@ -23,7 +23,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 class PhoneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phone
-        fields = ('name', 'phone', 'ext', 'location', 'customer')
+        fields = ('name', 'phone', 'ext', 'customer', 'owner')
 
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
