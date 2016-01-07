@@ -18,6 +18,8 @@ class SessionType(models.Model):
     shoot_time = models.TimeField()
     edit_time = models.TimeField()
     owner = models.ForeignKey(User)
+    def __str__(self):
+        return self.name + " ($" + str(self.base_price) + ")"
 
 class Session(models.Model):
     datetime = models.DateTimeField()
@@ -30,6 +32,8 @@ class Session(models.Model):
     edit_time = models.TimeField()
     owner = models.ForeignKey(User)
     customer = models.ForeignKey('Customer')
+    def __str__(self):
+        return str(self.datetime)
 
 ##########CHILD CLASSES##########
 
@@ -46,8 +50,10 @@ class EmailAddress(models.Model):
     email_address = models.CharField(max_length=200)
     customer = models.ForeignKey('Customer', blank=True, null=True)
     owner = models.ForeignKey(User)
+    class Meta:
+        verbose_name_plural = "Email addresses"
     def __str__(self):
-        return self.email
+        return self.email_address
 
 class Link(models.Model):
     name = models.CharField(max_length=100)
@@ -56,7 +62,7 @@ class Link(models.Model):
     session = models.ForeignKey('Session', blank=True, null=True)
     owner = models.ForeignKey(User)
     def __str__(self):
-        return self.url
+        return self.name
 
 class Address(models.Model):
     name = models.CharField(max_length=100)
@@ -68,5 +74,7 @@ class Address(models.Model):
     customer = models.ForeignKey('Customer', related_name='addresses', blank=True, null=True)
     session = models.ForeignKey('Session', related_name='addresses', blank=True, null=True)
     owner = models.ForeignKey(User)
+    class Meta:
+        verbose_name_plural = "Addresses"
     def __str__(self):
         return self.name
