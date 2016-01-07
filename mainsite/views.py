@@ -28,6 +28,7 @@ class PhoneViewSet(viewsets.ModelViewSet):
 
 class SessionViewSet(viewsets.ModelViewSet):
     queryset = Session.objects.all()
+    #def get_queryset(self):
     serializer_class = SessionSerializer
 
 class AddressViewSet(viewsets.ModelViewSet):
