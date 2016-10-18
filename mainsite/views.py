@@ -9,6 +9,13 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from mainsite.models import SessionType, Customer, Phone, Session
 from mainsite.models import Address
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("hello world")
+
+
+# ViewSets for DRF
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')

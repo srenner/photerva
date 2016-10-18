@@ -28,6 +28,7 @@ router.register(r'addresses', views.AddressViewSet, base_name='Address')
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
+    url(r'^', include('mainsite.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
