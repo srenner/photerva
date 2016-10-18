@@ -10,9 +10,12 @@ from django.contrib.auth.models import User
 from mainsite.models import SessionType, Customer, Phone, Session
 from mainsite.models import Address
 from django.http import HttpResponse
+from django.template import loader
 
 def index(request):
-    return HttpResponse("hello world")
+    template = loader.get_template('mainsite/index.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 
 # ViewSets for DRF
