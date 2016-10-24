@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	{% load staticfiles %}
+	{% block head %}{% endblock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mainsite/vendor/bootstrap/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'mainsite/css/style.css' %}" />
+
+</head>
+<body>
+	<nav class="container-fluid navbar navbar-default navbar-static-top" role="navigation">
+		<div>
+        	<div class="navbar-header">
+	          	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	          	</button>
+	          	<a class="navbar-brand" href="/"></a>
+        	</div>
+	        <div id="navigationbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/">Home</a></li>
+				</ul>
+			</div>
+  		</div>
+    </nav>
+    {% block header %}{% endblock %}
+	<div id="divContent" class="container">
+		<noscript>
+			<div class="alert alert-danger">
+				<p class="text-center">
+					<span class="glyphicon glyphicon-warning-sign"></span>
+					<strong>Enable JavaScript for a better experience on this site.</strong>
+				</p>
+			</div>
+		</noscript>
+		{% block content %}{% endblock %}
+	</div>
+	<footer id="divFooter" class="container text-right">
+		<hr>
+		<span class="hidden-xs">developed by </span><a href="http://www.shawnrenner.com/">srenner</a>
+		|
+		<a href="https://github.com/srenner/photerva">github</a>
+	</footer>
+	<script src="{% static 'mainsite/vendor/jquery/jquery.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'mainsite/vendor/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>
