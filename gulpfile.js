@@ -32,5 +32,9 @@ gulp.task('default', function() {
     'node_modules/jquery/dist/*'
   ]).pipe(gulp.dest('./mainsite/static/mainsite/vendor/jquery/'));
 
+  gulp.src([
+    'node_modules/moment/min/*'
+  ]).pipe(gulp.dest('./mainsite/static/mainsite/vendor/moment/'));
+
   console.log('gulped');
 });
